@@ -1,0 +1,22 @@
+[package]
+edition = "2021"
+name = "bevy-blocks"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# remove "dynamic" for release builds
+bevy = {git = "https://github.com/bevyengine/bevy", branch = "main", features = ["wayland", "dynamic"]}
+block-mesh = {git = "https://github.com/bonsairobo/block-mesh-rs", branch = "main"}
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[workspace.metadata.dylint]
+libraries = [
+  {git = "https://github.com/MinerSebas/bevy_lint", branch = "main"},
+]
